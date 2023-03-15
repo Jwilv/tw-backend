@@ -6,12 +6,14 @@ import (
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+
 )
 
 var MongoCN = ConnectionDb()
 
 var clientOptions = options.Client().ApplyURI("mongodb+srv://tw:Ofsw6KqbfoZol4k2@cluster0.sxvlsh2.mongodb.net/tw")
 
+//ConnectionDb me permite conectarme a la data base
 func ConnectionDb() *mongo.Client {
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
@@ -25,4 +27,10 @@ func ConnectionDb() *mongo.Client {
 	}
 	log.Println("connection DB")
 	return client
+}
+
+//chequeo de la conexion a la base de datos
+func ChekingConnection() bool{
+	err := MongoCN.Ping(context.TODO(), nil)
+	return err == nil
 }
