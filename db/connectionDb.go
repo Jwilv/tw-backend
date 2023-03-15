@@ -9,6 +9,7 @@ import (
 
 )
 
+//MongoCN es el objeto se conexion a nuestra base de datos
 var MongoCN = ConnectionDb()
 
 var clientOptions = options.Client().ApplyURI("mongodb+srv://tw:Ofsw6KqbfoZol4k2@cluster0.sxvlsh2.mongodb.net/tw")
