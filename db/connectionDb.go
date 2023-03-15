@@ -31,6 +31,7 @@ func ConnectionDb() *mongo.Client {
 }
 
 //chequeo de la conexion a la base de datos
+// y me conecto usando MongoCN
 func ChekingConnection() bool{
 	err := MongoCN.Ping(context.TODO(), nil)
 	return err == nil
