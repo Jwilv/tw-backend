@@ -8,11 +8,11 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-var MongoCN = connectionDb()
+var MongoCN = ConnectionDb()
 
-var clientOptions = options.Client().ApplyURI("")
+var clientOptions = options.Client().ApplyURI("mongodb+srv://tw:Ofsw6KqbfoZol4k2@cluster0.sxvlsh2.mongodb.net/tw")
 
-func connectionDb() *mongo.Client {
+func ConnectionDb() *mongo.Client {
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
 		log.Fatal(err)
