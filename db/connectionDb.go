@@ -18,5 +18,11 @@ func connectionDb() *mongo.Client {
 		log.Fatal(err)
 		return client
 	}
+	err = client.Ping(context.TODO(), nil)
+	if err != nil {
+		log.Fatal(err)
+		return client
+	}
+	log.Println("connection DB")
 
 }
