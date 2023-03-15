@@ -24,5 +24,5 @@ func connectionDb() *mongo.Client {
 		return client
 	}
 	log.Println("connection DB")
-
+	return client
 }
