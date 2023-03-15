@@ -12,4 +12,6 @@ var MongoCN = connectionDb()
 
 var clientOptions = options.Client().ApplyURI("")
 
-
+func connectionDb() *mongo.Client {
+	client, err := mongo.Connect(context.TODO(), clientOptions)
+}
