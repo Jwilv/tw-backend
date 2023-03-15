@@ -14,6 +14,8 @@ import (
 func Drivers() {
 	router := mux.NewRouter()
 
+	router.HandleFunc("/register", middleware.CheckDb(routers.register)).Methods("POST")
+
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"
