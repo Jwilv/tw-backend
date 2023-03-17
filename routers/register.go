@@ -32,5 +32,10 @@ func Register(w http.ResponseWriter, r *http.Request) {
 		http.Error(w,"Este email ya esta en uso ", 400)
 	}
 
+	_,status, err := db.RegisterUser(user)
+
+	if err != nil {
+		http.Error(w, "Ocurrio un error al registar el usuario "+err.Error(), 400)
+	}
 }
 
