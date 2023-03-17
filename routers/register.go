@@ -14,6 +14,11 @@ func Register(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&user)
 	if err != nil {
 		http.Error(w, "Error en los datos recibidos " + err.Error(), 400)
+		return 
 	}
 
+	if len(user.Email) == 0 {
+		http.Error(w, "Se requiere un email", 400)
+	}
 }
+
