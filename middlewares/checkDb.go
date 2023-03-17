@@ -7,6 +7,7 @@ import (
 
 )
 
+// me permite conocer el estado de la base de datos 
 func CheckDb(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if !db.ChekingConnection() {
