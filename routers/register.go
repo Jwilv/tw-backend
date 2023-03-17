@@ -20,5 +20,9 @@ func Register(w http.ResponseWriter, r *http.Request) {
 	if len(user.Email) == 0 {
 		http.Error(w, "Se requiere un email", 400)
 	}
+
+	if len(user.Password) >= 6 {
+		http.Error(w, "la contraseña debe de ser de 6 caracteres minimo", 400)
+	}
 }
 
