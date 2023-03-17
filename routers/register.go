@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"github.com/Jwilv/tw-backend/db"
 	"github.com/Jwilv/tw-backend/models"
 
 )
@@ -24,5 +25,12 @@ func Register(w http.ResponseWriter, r *http.Request) {
 	if len(user.Password) < 6 {
 		http.Error(w, "la contraseña debe de ser de 6 caracteres minimo", 400)
 	}
+
+	_,exist,_ := db.CheckExisEmail(user.Email)
+
+	if exist{
+		http.Error(w,"Este email ya esta en uso ", 400)
+	}
+
 }
 
