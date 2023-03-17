@@ -20,22 +20,33 @@ func Register(w http.ResponseWriter, r *http.Request) {
 
 	if len(user.Email) == 0 {
 		http.Error(w, "Se requiere un email", 400)
+		return
 	}
 
 	if len(user.Password) < 6 {
 		http.Error(w, "la contraseña debe de ser de 6 caracteres minimo", 400)
+		return
 	}
 
 	_,exist,_ := db.CheckExisEmail(user.Email)
 
 	if exist{
 		http.Error(w,"Este email ya esta en uso ", 400)
+		return
 	}
 
 	_,status, err := db.RegisterUser(user)
 
 	if err != nil {
 		http.Error(w, "Ocurrio un error al registar el usuario "+err.Error(), 400)
+		return
 	}
+
+	if !status {
+		http.Error(w, "No se pudo registrar el usuario ", 400)
+		return
+	}
+
+	w.WriteHeader(http.StatusCreated)
 }
 
