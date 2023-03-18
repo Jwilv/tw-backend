@@ -1,8 +1,18 @@
 package db
 
-import "github.com/Jwilv/tw-backend/models"
+import (
+	"context"
+	"time"
 
-//RegisterUser es la funcion que obtiene como parametro el user y lo registra en la base de datos
-func RegisterUser(user models.User) (string,bool,error){
+	"github.com/Jwilv/tw-backend/models"
 
+)
+
+// RegisterUser es la funcion que obtiene como parametro el user y lo registra en la base de datos
+func RegisterUser(user models.User) (string, bool, error) {
+
+	context, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+	defer cancel()
+	db := MongoCN.Database("tw")
+	collection := db.Collection("users")
 }
