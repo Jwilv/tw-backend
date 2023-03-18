@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/Jwilv/tw-backend/models"
-
 )
 
 // RegisterUser es la funcion que obtiene como parametro el user y lo registra en la base de datos
@@ -17,4 +16,10 @@ func RegisterUser(user models.User) (string, bool, error) {
 	collection := db.Collection("users")
 
 	user.Password, _ = EncryptPassword(user.Password)
+
+	result, err := collection.InsertOne(context, user)
+	if err != nil {
+		return "", false, err
+	}
+
 }
