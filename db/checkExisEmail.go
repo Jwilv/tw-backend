@@ -25,6 +25,10 @@ func CheckExisEmail(email string) (models.User, bool, string) {
 
 	ID := result.ID.Hex()
 
+	if err != nil {
+		return result, false, ID
+	}
 
+	return result, true, ID
 	
 }
