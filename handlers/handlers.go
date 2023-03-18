@@ -5,16 +5,17 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/Jwilv/tw-backend/middlewares"
+	"github.com/Jwilv/tw-backend/routers"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
-
 )
 
-//Drivers manejo de seteo y ListenServe
+// Drivers manejo de seteo y ListenServe
 func Drivers() {
 	router := mux.NewRouter()
 
-	router.HandleFunc("/register", middleware.CheckDb(routers.Register)).Methods("POST")
+	router.HandleFunc("/register", middlewares.CheckDb(routers.Register)).Methods("POST")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
