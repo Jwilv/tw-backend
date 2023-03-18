@@ -15,4 +15,6 @@ func RegisterUser(user models.User) (string, bool, error) {
 	defer cancel()
 	db := MongoCN.Database("tw")
 	collection := db.Collection("users")
+
+	user.Password, _ = EncryptPassword(user.Password)
 }
