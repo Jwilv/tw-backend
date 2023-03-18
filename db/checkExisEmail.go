@@ -17,6 +17,10 @@ func CheckExisEmail(email string) (models.User, bool, string) {
 	db := MongoCN.Database("tw")
 	collection := db.Collection("users")
 
+	condition := bson.M{"email":email}
+
+	var result models.User
+
 
 	
 }
