@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/Jwilv/tw-backend/models"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 // RegisterUser es la funcion que obtiene como parametro el user y lo registra en la base de datos
@@ -21,5 +22,7 @@ func RegisterUser(user models.User) (string, bool, error) {
 	if err != nil {
 		return "", false, err
 	}
+	ObjID, _ := result.InsertedID.(primitive.ObjectID)
 
+	return ObjID.String(), true, nil
 }
