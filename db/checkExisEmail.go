@@ -21,6 +21,10 @@ func CheckExisEmail(email string) (models.User, bool, string) {
 
 	var result models.User
 
+	err := collection.FindOne(context, condition).Decode(&result)
+
+	ID := result.ID.Hex()
+
 
 	
 }
