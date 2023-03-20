@@ -32,5 +32,12 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Usuario invalido", 400)
 		return
 	}
+	jwtKey, err := jwt.GenerateJwt(documet)
+	if err != nil {
+		http.Error(w, "Error al intentar generar el token "+err.Error(), 400)
+		return
+	}
+
+
 
 }
