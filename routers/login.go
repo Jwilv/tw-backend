@@ -16,6 +16,11 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	var user models.User
 
+	err := json.NewDecoder(r.Body).Decode(&user)
+	if err != nil {
+		http.Error(w, "Usuario y/o contraseña invalidos"+err.Error(), 400)
+		return
+	}
 
-
+	
 }
