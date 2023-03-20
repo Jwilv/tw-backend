@@ -27,5 +27,10 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	
+	documet, exist := db.IntentLogin(user.Email, user.Password)
+	if !exist {
+		http.Error(w, "Usuario invalido", 400)
+		return
+	}
+
 }
