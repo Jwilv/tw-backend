@@ -22,5 +22,10 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if len(user.Email) < 6 {
+		http.Error(w, "Se requiere el email del usuario", 400)
+		return
+	}
+
 	
 }
