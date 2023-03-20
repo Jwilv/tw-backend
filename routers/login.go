@@ -38,6 +38,9 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	resp := models.ResponseLogin{
+		Token: jwtKey,
+	}
 
 
 }
