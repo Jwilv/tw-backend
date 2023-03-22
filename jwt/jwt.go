@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/Jwilv/tw-backend/models"
-	"github.com/dgrijalva/jwt-go"
+	jwt "github.com/dgrijalva/jwt-go"
 )
 
 func GenerateJwt(user models.User) (string, error) {
