@@ -16,6 +16,7 @@ func Drivers() {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/register", middlewares.CheckDb(routers.Register)).Methods("POST")
+	router.HandleFunc("/login", middlewares.CheckDb(routers.Login)).Methods("POST")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
