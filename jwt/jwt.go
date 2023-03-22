@@ -21,5 +21,10 @@ func GenerateJwt(user models.User) (string, error) {
 		"exp":       time.Now().Add(time.Hour * 24).Unix(),
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, payload)
+	tokenStr, err := token.SignedString(key)
+	if err != nil {
+		return tokenStr, err
+	}
 
+	return tokenStr, nil
 }
