@@ -20,5 +20,6 @@ func GenerateJwt(user models.User) (string, error) {
 		"_id":       user.ID.Hex(),
 		"exp":       time.Now().Add(time.Hour * 24).Unix(),
 	}
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, payload)
 
 }
