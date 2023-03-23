@@ -11,6 +11,7 @@ import (
 
 func validateJwt(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		_, _, _, err := routers.ProcessToken(r.Header.Get("x-token"))
 
 	}
 }
