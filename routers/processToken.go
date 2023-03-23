@@ -9,14 +9,18 @@ import (
 	jwt "github.com/dgrijalva/jwt-go"
 )
 
+// variable que almacena el email de user
 var Email string
 
+// variable que almacena el id del user
 var IDUser string
 
 // procesa si el token recivido es valido
 func ProcessToken(token string) (*models.Claim, bool, string, error) {
+
 	key := []byte("oqwepFJO03-49RFSAFN0123@$WEWQAsfoajf")
 
+	//key del token
 	claims := &models.Claim{}
 
 	splitToken := strings.Split(token, "Bearer")
