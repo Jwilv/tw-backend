@@ -17,6 +17,7 @@ func Drivers() {
 
 	router.HandleFunc("/register", middlewares.CheckDb(routers.Register)).Methods("POST")
 	router.HandleFunc("/login", middlewares.CheckDb(routers.Login)).Methods("POST")
+	router.HandleFunc("/getprofile", middlewares.CheckDb(middlewares.ValidateJwt(routers.GetProfile))).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
