@@ -8,9 +8,11 @@ import (
 	"github.com/Jwilv/tw-backend/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
+
 )
 
-func GetProfile(ID string) (models.User, error) {
+//SearchProfile se encarga de buscar el perfil segun el id como parametro
+func SearchProfile(ID string) (models.User, error) {
 
 	context, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
