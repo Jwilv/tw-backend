@@ -2,7 +2,6 @@ package routers
 
 import (
 	"errors"
-	"strings"
 
 	"github.com/Jwilv/tw-backend/db"
 	"github.com/Jwilv/tw-backend/models"
@@ -22,17 +21,6 @@ func ProcessToken(token string) (*models.Claim, bool, string, error) {
 
 	//puntero a la posicion de claim para guardar en objeto mas adelante
 	claims := &models.Claim{}
-
-	//split para dividir en token en 2 y separar la palabra Bearer
-	splitToken := strings.Split(token, "Bearer")
-
-	//medimos si el largo del split es de 2 para saber si tiene el formato  valido
-	if len(splitToken) != 2 {
-		return claims, false, string(""), errors.New("formato de token invalido")
-	}
-
-	//tomamos la pocicion donde esta el token y le sacamos los espacios
-	token = strings.TrimSpace(splitToken[1])
 
 	//verificamos el token, mandando el token, la estructura para guardar los datos que es un puntero al modelo
 	// y la funcion de err po si el token no es valido
