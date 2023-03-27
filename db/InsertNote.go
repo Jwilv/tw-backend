@@ -6,6 +6,7 @@ import (
 
 	"github.com/Jwilv/tw-backend/models"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 
 )
 
@@ -19,9 +20,18 @@ func InsertNote(note models.RegisterNote) (string, bool, error) {
 	collection := db.Collection("notes")
 
 	register := bson.M{
-		"userId": note.userId,
-		"message": note.message,
-		"date":note.date,
-
+		"userId":  note.UserId,
+		"message": note.Message,
+		"date":    note.Date,
 	}
+
+	result, err := collection.InsertOne(context, register)
+
+	if err != nil {
+		return string(""), false, err
+	}
+
+	objId, _ := result.InsertedID.(primitive.ObjectID)
+
+	return objId.String(), true, nil
 }
