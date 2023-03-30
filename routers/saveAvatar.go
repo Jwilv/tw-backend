@@ -11,6 +11,9 @@ import (
 
 )
 
+//modifica el user en la base de datos 
+// y crea un archivo en la carpeta updates y el path va aser guardado en la base de datos 
+
 func SaveAvatar(w http.ResponseWriter, r *http.Request) {
 
 	file, handler, errFile := r.FormFile("avatar")
