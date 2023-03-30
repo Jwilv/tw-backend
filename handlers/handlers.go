@@ -23,6 +23,9 @@ func Drivers() {
 	router.HandleFunc("/saveNote", middlewares.CheckDb(middlewares.ValidateJwt(routers.SaveNote))).Methods("POST")
 	router.HandleFunc("/getNotes", middlewares.CheckDb(middlewares.ValidateJwt(routers.GetNotes))).Methods("GET")
 	router.HandleFunc("/removeNote", middlewares.CheckDb(middlewares.ValidateJwt(routers.RemoveNote))).Methods("DELETE")
+	router.HandleFunc("/updateAvatar", middlewares.CheckDb(middlewares.ValidateJwt(routers.SaveAvatar))).Methods("POST")
+
+
 
 
 	PORT := os.Getenv("PORT")
