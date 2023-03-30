@@ -25,6 +25,7 @@ func Drivers() {
 	router.HandleFunc("/removeNote", middlewares.CheckDb(middlewares.ValidateJwt(routers.RemoveNote))).Methods("DELETE")
 	router.HandleFunc("/updateAvatar", middlewares.CheckDb(middlewares.ValidateJwt(routers.SaveAvatar))).Methods("POST")
 	router.HandleFunc("/updateBanner", middlewares.CheckDb(middlewares.ValidateJwt(routers.SaveBanner))).Methods("POST")
+	router.HandleFunc("/getBanner", middlewares.CheckDb(routers.GetBanner)).Methods("GET")
 
 
 
