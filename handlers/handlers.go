@@ -26,7 +26,7 @@ func Drivers() {
 	router.HandleFunc("/updateAvatar", middlewares.CheckDb(middlewares.ValidateJwt(routers.SaveAvatar))).Methods("POST")
 	router.HandleFunc("/updateBanner", middlewares.CheckDb(middlewares.ValidateJwt(routers.SaveBanner))).Methods("POST")
 	router.HandleFunc("/getBanner", middlewares.CheckDb(routers.GetBanner)).Methods("GET")
-
+	router.HandleFunc("/getAvatar", middlewares.CheckDb(routers.GetAvatar)).Methods("GET")
 
 
 
