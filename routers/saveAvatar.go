@@ -25,7 +25,7 @@ func SaveAvatar(w http.ResponseWriter, r *http.Request) {
 
 	var extension = strings.Split(handler.Filename, ".")[1]
 
-	if extension != "jpg" || extension != "png" || extension != "gif"{
+	if extension != "jpg" && extension != "png" && extension != "gif"{
 		http.Error(w, "formato de archivo invalido, se permiten los siguientes formatos jpg,png,gif", http.StatusBadRequest)
 		return
 	}
