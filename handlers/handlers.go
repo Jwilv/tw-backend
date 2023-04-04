@@ -46,6 +46,9 @@ func Drivers() {
 	//en la respuesta y asi enviar el archivo
 	router.HandleFunc("/getAvatar", middlewares.CheckDb(routers.GetAvatar)).Methods("GET")
 
+	//route relationUsers, inserta la relacion entre 2 usuarios y la guarda en la base de datos
+	router.HandleFunc("/relationUsers", middlewares.CheckDb(middlewares.ValidateJwt(routers.Relation))).Methods("POST")
+
 
 
 	PORT := os.Getenv("PORT")
