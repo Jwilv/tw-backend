@@ -17,6 +17,11 @@ func Relation(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if ID == IDUser{
+		http.Error(w,"las Id no pueden ser iguales en una relacion", http.StatusBadRequest)
+		return
+	}
+
 	var relation models.Relation
 
 	relation.UserID = IDUser
