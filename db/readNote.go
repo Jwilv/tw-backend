@@ -26,10 +26,10 @@ func ReadNotes(ID string, page int64) ([]*models.ReturnNotes, bool) {
 	}
 
 	options := options.Find()
+	options.SetSkip((page - 1) * 20)
 	options.SetLimit(20)
 	options.SetSort(bson.D{{Key: "date", Value: -1}})
 
-	options.SetSkip((page - 1) * 20)
 
 	cursor, err := collection.Find(contextDb, condition, options)
 
