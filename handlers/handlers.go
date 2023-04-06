@@ -49,6 +49,9 @@ func Drivers() {
 	//route relationUsers, inserta la relacion entre 2 usuarios y la guarda en la base de datos
 	router.HandleFunc("/relationUsers", middlewares.CheckDb(middlewares.ValidateJwt(routers.Relation))).Methods("POST")
 
+	//elimina la relacion con el user enviado mediante el id
+	router.HandleFunc("/deleteRelation", middlewares.CheckDb(middlewares.ValidateJwt(routers.DeleteRelation))).Methods("DELETE")
+
 
 
 	PORT := os.Getenv("PORT")
