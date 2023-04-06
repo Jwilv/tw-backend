@@ -24,13 +24,16 @@ func GetRelation(w http.ResponseWriter, r *http.Request) {
 
 	status, err := db.FindRelation(relation)
 
-	if err != nil || !status {
+	var result models.ReturnRelation
 
-		return
+	if err != nil || !status {
+		result.Status = false 
+	}else{
+		result.Status = true 
 	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode()
+	json.NewEncoder(w).Encode(result)
 
 }
