@@ -52,6 +52,9 @@ func Drivers() {
 	//elimina la relacion con el user enviado mediante el id
 	router.HandleFunc("/deleteRelation", middlewares.CheckDb(middlewares.ValidateJwt(routers.DeleteRelation))).Methods("DELETE")
 
+	//check de relacion existente 
+	router.HandleFunc("/checkRelation", middlewares.CheckDb(middlewares.ValidateJwt(routers.GetRelation))).Methods("GET")
+
 
 
 	PORT := os.Getenv("PORT")
