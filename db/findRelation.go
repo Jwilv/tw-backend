@@ -8,24 +8,24 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-func FindRelation(relation models.Relation)(bool,error) {
+func FindRelation(relation models.Relation) (bool, error) {
 
-	contextDB, cancel := context.WithTimeout(context.Background(), time.Second * 15 )
+	contextDB, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
 
 	db := MongoCN.Database("tw")
 	collection := db.Collection("relation")
 
 	filter := bson.M{
-		"userId" : relation.UserID,
-		"userRelationId" : relation.UserRelationID,
+		"userId":         relation.UserID,
+		"userRelationId": relation.UserRelationID,
 	}
 
 	var result models.Relation
 
-	err := collection.FindOne(contextDB,filter).Decode(&result)
+	err := collection.FindOne(contextDB, filter).Decode(&result)
 
-	if err != nil{
+	if err != nil {
 		return false, err
 	}
 
