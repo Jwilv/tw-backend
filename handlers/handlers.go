@@ -55,6 +55,9 @@ func Drivers() {
 	//check de relacion existente 
 	router.HandleFunc("/checkRelation", middlewares.CheckDb(middlewares.ValidateJwt(routers.GetRelation))).Methods("GET")
 
+	//
+	router.HandleFunc("/getUsers", middlewares.CheckDb(middlewares.ValidateJwt(routers.UsersList))).Methods("GET")
+
 
 
 	PORT := os.Getenv("PORT")
