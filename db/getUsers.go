@@ -8,6 +8,7 @@ import (
 	"github.com/Jwilv/tw-backend/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo/options"
+
 )
 
 func GetUsers(ID string, page int64, search string, typee string) ([]*models.User, bool) {
@@ -34,7 +35,7 @@ func GetUsers(ID string, page int64, search string, typee string) ([]*models.Use
 		return result, false
 	}
 
-	var found, include bool
+	var include bool
 
 	for cursor.Next(contextDB) {
 		var user models.User
@@ -51,7 +52,7 @@ func GetUsers(ID string, page int64, search string, typee string) ([]*models.Use
 
 		include = false
 
-		found, err = FindRelation(relationCheck)
+		found,_ := FindRelation(relationCheck)
 
 		if typee == "new" && !found {
 			include = true
