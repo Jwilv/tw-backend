@@ -20,6 +20,8 @@ func ReadNotesFollow(ID string, page int) ([]*models.NotesFollow, bool) {
 
 	skip := (page - 1) * 20
 
+	var result []*models.NotesFollow
+
 	conditions := make([]*bson.M,0)
 	conditions = append(conditions, &bson.M{"$match": bson.M{"userId":ID}})
 	conditions = append(conditions, &bson.M{
@@ -37,11 +39,13 @@ func ReadNotesFollow(ID string, page int) ([]*models.NotesFollow, bool) {
 
 cursor, err := collection.Aggregate(contextDB, conditions)
 
-var result []*models.NotesFollow
-
-err = cursor.All(contextDB, &result)
-
 if err != nil{
+	return result, false 
+}
+
+errCursor := cursor.All(contextDB, &result)
+
+if errCursor != nil{
 	return result, false 
 }
 
