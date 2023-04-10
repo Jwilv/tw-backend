@@ -55,7 +55,7 @@ func Drivers() {
 	//check de relacion existente 
 	router.HandleFunc("/checkRelation", middlewares.CheckDb(middlewares.ValidateJwt(routers.GetRelation))).Methods("GET")
 
-	//
+	//retorna un listado de usuarios, dependiendo del tipo, los new o los follow
 	router.HandleFunc("/getUsers", middlewares.CheckDb(middlewares.ValidateJwt(routers.UsersList))).Methods("GET")
 
 	//se le envia el numero de la pagina y retorna los notas de los usuarios que el usuario de la cuenta sigue
