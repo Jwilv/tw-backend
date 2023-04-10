@@ -6,10 +6,16 @@ import (
 	"strconv"
 
 	"github.com/Jwilv/tw-backend/db"
+
 )
 
 func GetNotesFollow(w http.ResponseWriter, r *http.Request) {
 	page := r.URL.Query().Get("page")
+
+	if len(page) < 1 {
+	http.Error(w,"No se recivio la page", http.StatusBadRequest)
+	return
+	}
 
 	pageNum, errPage := strconv.Atoi(page)
 
