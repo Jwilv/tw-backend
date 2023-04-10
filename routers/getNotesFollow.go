@@ -24,7 +24,7 @@ func GetNotesFollow(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	pag := int64(pageNum)
+	pag := int(pageNum)
 
 	results, status := db.ReadNotesFollow(IDUser, pag)
 
