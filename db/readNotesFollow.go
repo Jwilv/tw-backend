@@ -10,7 +10,7 @@ import (
 )
 
 // retorna una lista de las notas de las perosnas que el usuario sigue y un stado
-func ReadNotesFollow(ID string, page int) ([]*models.NotesFollow, bool) {
+func ReadNotesFollow(ID string, page int64) ([]*models.NotesFollow, bool) {
 
 	contextDB, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
