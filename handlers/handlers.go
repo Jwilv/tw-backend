@@ -58,6 +58,9 @@ func Drivers() {
 	//
 	router.HandleFunc("/getUsers", middlewares.CheckDb(middlewares.ValidateJwt(routers.UsersList))).Methods("GET")
 
+	//se le envia el numero de la pagina y retorna los notas de los usuarios que el usuario de la cuenta sigue
+	router.HandleFunc("/notesFollow", middlewares.CheckDb(middlewares.ValidateJwt(routers.GetNotesFollow))).Methods("GET")
+
 
 
 	PORT := os.Getenv("PORT")
