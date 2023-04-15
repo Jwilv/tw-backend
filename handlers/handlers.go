@@ -9,7 +9,6 @@ import (
 	"github.com/Jwilv/tw-backend/routers"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
-
 )
 
 // Drivers manejo de seteo y ListenServe
@@ -17,15 +16,15 @@ func Drivers() {
 
 	//Router objet
 	router := mux.NewRouter()
-	//route register, crea user en la base de datos 
+	//route register, crea user en la base de datos
 	router.HandleFunc("/register", middlewares.CheckDb(routers.Register)).Methods("POST")
 	//route login, se encarga de logear la data contra la base de datos
 	router.HandleFunc("/login", middlewares.CheckDb(routers.Login)).Methods("POST")
 	//obtiene un id y devuelve un modelo user que se encuentre en la base de datos. que contenga la id otorgada
 	router.HandleFunc("/getprofile", middlewares.CheckDb(middlewares.ValidateJwt(routers.GetProfile))).Methods("GET")
-	//obtiene data y la pasa a un modelo de user, para despues buscarlo en la base de datos y modificarlo 
+	//obtiene data y la pasa a un modelo de user, para despues buscarlo en la base de datos y modificarlo
 	router.HandleFunc("/changeProfile", middlewares.CheckDb(middlewares.ValidateJwt(routers.ChangeProfile))).Methods("PUT")
-	//obtiene la data y la pasa a un modelo de note para despues subirlo a la base de datos 
+	//obtiene la data y la pasa a un modelo de note para despues subirlo a la base de datos
 	router.HandleFunc("/saveNote", middlewares.CheckDb(middlewares.ValidateJwt(routers.SaveNote))).Methods("POST")
 	//se obtiene las notas de la base de datos y se le pasa a un arreglo, se obtiene todas las notas del user.
 	// ya que se envia el id de dicho user
@@ -52,7 +51,7 @@ func Drivers() {
 	//elimina la relacion con el user enviado mediante el id
 	router.HandleFunc("/deleteRelation", middlewares.CheckDb(middlewares.ValidateJwt(routers.DeleteRelation))).Methods("DELETE")
 
-	//check de relacion existente 
+	//check de relacion existente
 	router.HandleFunc("/checkRelation", middlewares.CheckDb(middlewares.ValidateJwt(routers.GetRelation))).Methods("GET")
 
 	//retorna un listado de usuarios, dependiendo del tipo, los new o los follow
@@ -61,7 +60,8 @@ func Drivers() {
 	//se le envia el numero de la pagina y retorna los notas de los usuarios que el usuario de la cuenta sigue
 	router.HandleFunc("/notesFollow", middlewares.CheckDb(middlewares.ValidateJwt(routers.GetNotesFollow))).Methods("GET")
 
-
+	//renueva el token
+	router.HandleFunc("/renew", middlewares.CheckDb(middlewares.ValidateJwt(routers.RenewToken))).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
