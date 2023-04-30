@@ -63,6 +63,9 @@ func Drivers() {
 	//renueva el token
 	router.HandleFunc("/renew", middlewares.CheckDb(middlewares.ValidateJwt(routers.RenewToken))).Methods("GET")
 
+	router.HandleFunc("/notesrandom", middlewares.CheckDb(routers.GetRandomNotes)).Methods("GET")
+
+
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"

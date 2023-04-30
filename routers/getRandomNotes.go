@@ -7,7 +7,7 @@ import (
 	"github.com/Jwilv/tw-backend/db"
 )
 
-func getRandomNotes(w http.ResponseWriter, r *http.Request){
+func GetRandomNotes(w http.ResponseWriter, r *http.Request){
 
 	notes := db.ReadRandomNotes()
 

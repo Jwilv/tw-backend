@@ -34,10 +34,5 @@ func ReadRandomNotes() []models.ReturnNotes {
 		log.Fatal(err)
 	}
 
-	// Imprime las notas aleatorias obtenidas
-	for _, note := range notes {
-		fmt.Println(note.ID, note.Message, note.Date)
-	}
-
 	return notes
 }
