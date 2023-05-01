@@ -2,7 +2,6 @@ package db
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"time"
 
@@ -12,7 +11,7 @@ import (
 )
 
 func ReadRandomNotes() []models.ReturnNotes {
-	context, cancel := context.WithTimeout( context.Background(), 15 * time.Second)
+	context, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
 	db := MongoCN.Database("tw")
@@ -20,7 +19,7 @@ func ReadRandomNotes() []models.ReturnNotes {
 
 	pipeline := mongo.Pipeline{
 		// Obtén una muestra aleatoria de 4 documentos
-		{{Key : "$sample", Value : bson.M{"size": 4}}},
+		{{Key: "$sample", Value: bson.M{"size": 4}}},
 	}
 
 	cursor, err := collection.Aggregate(context, pipeline)
