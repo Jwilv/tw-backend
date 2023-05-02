@@ -7,7 +7,6 @@ import (
 	"github.com/Jwilv/tw-backend/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-
 )
 
 // InsertNote graba la nota en la base de datos
@@ -23,6 +22,7 @@ func InsertNote(note models.RegisterNote) (string, bool, error) {
 		"userId":  note.UserId,
 		"message": note.Message,
 		"date":    note.Date,
+		"name":    note.Name,
 	}
 
 	result, err := collection.InsertOne(context, register)
