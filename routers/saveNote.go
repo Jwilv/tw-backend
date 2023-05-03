@@ -26,6 +26,7 @@ func SaveNote(w http.ResponseWriter, r *http.Request) {
 		UserId:  IDUser,
 		Message: message.Message,
 		Date:    time.Now(),
+		Name:	message.Name,
 	}
 
 	_, status, errInsert := db.InsertNote(register)
