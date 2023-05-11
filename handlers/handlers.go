@@ -65,7 +65,6 @@ func Drivers() {
 
 	router.HandleFunc("/notesrandom", middlewares.CheckDb(routers.GetRandomNotes)).Methods("GET")
 
-
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"
