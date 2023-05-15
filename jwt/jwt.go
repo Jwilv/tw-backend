@@ -5,6 +5,7 @@ import (
 
 	"github.com/Jwilv/tw-backend/models"
 	jwt "github.com/dgrijalva/jwt-go"
+
 )
 
 func GenerateJwt(user models.User) (string, error) {
