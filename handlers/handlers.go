@@ -71,6 +71,9 @@ func Drivers() {
 
 	router.HandleFunc("/msgadm", middlewares.CheckDb(middlewares.ValidateJwt(routers.SaveMsgAdmin))).Methods("POST")
 
+	router.HandleFunc("/removeMsg", middlewares.CheckDb(middlewares.ValidateJwt(routers.RemoveMsg))).Methods("DELETE")
+
+
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"
