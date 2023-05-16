@@ -65,6 +65,9 @@ func Drivers() {
 
 	router.HandleFunc("/notesrandom", middlewares.CheckDb(routers.GetRandomNotes)).Methods("GET")
 
+	router.HandleFunc("/inadmin", middlewares.CheckDb(routers.LoginAdminUser)).Methods("POST")
+
+
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"
