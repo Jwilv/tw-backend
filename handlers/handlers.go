@@ -69,11 +69,11 @@ func Drivers() {
 
 	router.HandleFunc("/upadmin", middlewares.CheckDb(routers.RegisterAdminUser)).Methods("POST")
 
-	router.HandleFunc("/msgadm", middlewares.CheckDb(middlewares.ValidateJwt(routers.SaveMsgAdmin))).Methods("POST")
+	router.HandleFunc("/msgadm", middlewares.CheckDb(middlewares.ValidateJwtAdmin(routers.SaveMsgAdmin))).Methods("POST")
 
-	router.HandleFunc("/removeMsg", middlewares.CheckDb(middlewares.ValidateJwt(routers.RemoveMsg))).Methods("DELETE")
+	router.HandleFunc("/removeMsg", middlewares.CheckDb(middlewares.ValidateJwtAdmin(routers.RemoveMsg))).Methods("DELETE")
 
-	router.HandleFunc("/getMsg", middlewares.CheckDb(middlewares.ValidateJwt(routers.GetMsg))).Methods("GET")
+	router.HandleFunc("/getMsg", middlewares.CheckDb(middlewares.ValidateJwtAdmin(routers.GetMsg))).Methods("GET")
 
 
 
