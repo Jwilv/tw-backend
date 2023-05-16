@@ -7,7 +7,7 @@ import (
 
 // IntentLogin es la funcion que noos permite logearnos
 func LoginAdmin(email string, password string) (models.User, bool) {
-	user, exist, _ := CheckExisEmail(email)
+	user, exist, _ := CheckEmailAdmin(email)
 	if !exist {
 		return user, false
 	}
