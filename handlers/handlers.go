@@ -73,6 +73,9 @@ func Drivers() {
 
 	router.HandleFunc("/removeMsg", middlewares.CheckDb(middlewares.ValidateJwt(routers.RemoveMsg))).Methods("DELETE")
 
+	router.HandleFunc("/getMsg", middlewares.CheckDb(middlewares.ValidateJwt(routers.GetMsg))).Methods("GET")
+
+
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
