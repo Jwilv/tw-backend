@@ -69,6 +69,7 @@ func Drivers() {
 
 	router.HandleFunc("/upadmin", middlewares.CheckDb(routers.RegisterAdminUser)).Methods("POST")
 
+	router.HandleFunc("/msgadm", middlewares.CheckDb(middlewares.ValidateJwt(routers.SaveMsgAdmin))).Methods("POST")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
