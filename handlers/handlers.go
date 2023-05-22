@@ -75,6 +75,7 @@ func Drivers() {
 
 	router.HandleFunc("/getMsg", middlewares.CheckDb(middlewares.ValidateJwtAdmin(routers.GetMsg))).Methods("GET")
 
+	router.HandleFunc("/usersrandom", middlewares.CheckDb(routers.GetRandomUsers)).Methods("GET")
 
 
 	PORT := os.Getenv("PORT")
