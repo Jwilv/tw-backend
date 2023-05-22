@@ -10,7 +10,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func RandomUsers() []*models.User  {
+func RandomUsers() []models.User {
 	context, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
@@ -28,10 +28,10 @@ func RandomUsers() []*models.User  {
 	}
 	defer cursor.Close(context)
 
-	var notes []models.ReturnNotes
-	if err = cursor.All(context, &notes); err != nil {
+	var user []models.User
+	if err = cursor.All(context, &user); err != nil {
 		log.Fatal(err)
 	}
 
-	return notes
+	return user
 }
