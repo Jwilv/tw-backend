@@ -77,6 +77,7 @@ func Drivers() {
 
 	router.HandleFunc("/usersrandom", middlewares.CheckDb(middlewares.ValidateJwt(routers.GetRandomUsers))).Methods("GET")
 
+	router.HandleFunc("/usersunfollow", middlewares.CheckDb(middlewares.ValidateJwt(routers.GetUsersUnfollow))).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
