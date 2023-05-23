@@ -11,7 +11,7 @@ import (
 func GetUsersUnfollow(w http.ResponseWriter, r *http.Request) {
 
 
-	result, status := db.ReadUsersUnfollow(IDUser, 1, "", "new")
+	result, status := db.ReadUsersUnfollow(IDUser, 1, "")
 
 	if !status {
 		http.Error(w, "ocurio un error al obtener el listado de usuarios", http.StatusBadRequest)

@@ -8,10 +8,9 @@ import (
 	"github.com/Jwilv/tw-backend/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo/options"
-
 )
 
-func ReadUsersUnfollow(ID string, page int64, search string, typee string) ([]*models.User, bool) {
+func ReadUsersUnfollow(ID string, page int64, search string) ([]*models.User, bool) {
 	contextDB, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
 
@@ -21,8 +20,8 @@ func ReadUsersUnfollow(ID string, page int64, search string, typee string) ([]*m
 	var result []*models.User
 
 	findOptions := options.Find()
-	findOptions.SetSkip((page - 1) * 4)
-	findOptions.SetLimit(4)
+	findOptions.SetSkip((page - 1) * 10)
+	findOptions.SetLimit(8)
 
 	query := bson.M{
 		"name": bson.M{"$regex": `(?i)` + search},
@@ -52,9 +51,9 @@ func ReadUsersUnfollow(ID string, page int64, search string, typee string) ([]*m
 
 		include = false
 
-		found,_ := FindRelation(relationCheck)
+		found, _ := FindRelation(relationCheck)
 
-		if typee == "new" && !found {
+		if !found {
 			include = true
 		}
 
