@@ -21,7 +21,7 @@ func ReadUsersUnfollow(ID string, page int64, search string) ([]*models.User, bo
 
 	findOptions := options.Find()
 	findOptions.SetSkip((page - 1) * 10)
-	findOptions.SetLimit(8)
+	findOptions.SetLimit(5)
 
 	query := bson.M{
 		"name": bson.M{"$regex": `(?i)` + search},
