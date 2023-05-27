@@ -19,7 +19,7 @@ func ReadRandomNotes() []models.ReturnNotes {
 
 	pipeline := mongo.Pipeline{
 		// Obtén una muestra aleatoria de 4 documentos
-		{{Key: "$sample", Value: bson.M{"size": 4}}},
+		{{Key: "$sample", Value: bson.M{"size": 3}}},
 	}
 
 	cursor, err := collection.Aggregate(context, pipeline)
