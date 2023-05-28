@@ -10,7 +10,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func ReadRandomNotes() []models.ReturnNotes {
+func ReadRandomNotes(num int64) []models.ReturnNotes {
 	context, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
@@ -19,7 +19,7 @@ func ReadRandomNotes() []models.ReturnNotes {
 
 	pipeline := mongo.Pipeline{
 		// Obtén una muestra aleatoria de 4 documentos
-		{{Key: "$sample", Value: bson.M{"size": 3}}},
+		{{Key: "$sample", Value: bson.M{"size": num}}},
 	}
 
 	cursor, err := collection.Aggregate(context, pipeline)

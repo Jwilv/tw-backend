@@ -9,7 +9,7 @@ import (
 
 func GetRandomNotes(w http.ResponseWriter, r *http.Request){
 
-	notes := db.ReadRandomNotes()
+	notes := db.ReadRandomNotes(3)
 
 	w.Header().Set("Content-type","application/json")
 	w.WriteHeader(http.StatusCreated)
