@@ -7,7 +7,7 @@ import (
 	"github.com/Jwilv/tw-backend/db"
 )
 
-func suggestions(w http.ResponseWriter, r *http.Request){
+func Suggestions(w http.ResponseWriter, r *http.Request){
 
 	notes := db.ReadRandomNotes(30)
 

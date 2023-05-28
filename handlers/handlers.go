@@ -79,6 +79,9 @@ func Drivers() {
 
 	router.HandleFunc("/usersunfollow", middlewares.CheckDb(middlewares.ValidateJwt(routers.GetUsersUnfollow))).Methods("GET")
 
+	router.HandleFunc("/suggestions", middlewares.CheckDb(routers.Suggestions)).Methods("GET")
+
+
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"
