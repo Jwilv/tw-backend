@@ -13,7 +13,6 @@ func GenerateJwt(user models.User) (string, error) {
 		"email":     user.Email,
 		"name":      user.Name,
 		"surname":   user.Surname,
-		"birthDate": user.BirthDate,
 		"biography": user.Biography,
 		"location":  user.Location,
 		"website":   user.Website,

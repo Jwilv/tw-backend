@@ -44,7 +44,6 @@ func ModifyRegister(user models.User, ID string) (bool, error) {
 		registerDoc["website"] = user.Website
 	}
 
-	registerDoc["birthDate"] = user.BirthDate
 
 	updateDoc := bson.M{
 		"$set":registerDoc,
